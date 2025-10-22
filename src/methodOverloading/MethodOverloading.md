@@ -1,0 +1,2 @@
+Method Overloading in Java is one of the key features of polymorphism (specifically compile-time polymorphism).
+It allows multiple methods in the same class to have the same name, but with different parameters (number, type, or order).
