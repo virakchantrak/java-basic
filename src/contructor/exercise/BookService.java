@@ -1,7 +1,5 @@
 package contructor.exercise;
 
-import java.util.Scanner;
-
 public class BookService {
 
     public Book[] createBooks(int n) {
@@ -15,6 +13,18 @@ public class BookService {
         return books;
     }
 
+    public void sort(Book[] books) {
+        for (int i = 0; i < books.length; i++) {
+            for(int j  = i + 1; j < books.length; j++) {
+                if (books[i].getPrice() > books[j].getPrice()) {
+                    Book tmp = books[i];
+                    books[i] = books[j];
+                    books[j] = tmp;
+                }
+            }
+        }
+    }
+
     public void print(Book[] books) {
         for(Book book: books) {
             System.out.println(book.toString());
@@ -22,21 +32,10 @@ public class BookService {
     }
 
     public Book createBook() {
-        String title = getString("Please input title: ");
-        double price = getDouble("Please input price: ");
-        String author = getString("Please input author: ");
+        String title = Utils.getString("Please input title: ");
+        double price = Utils.getDouble("Please input price: ");
+        String author = Utils.getString("Please input author: ");
 
-        Book book = new Book(title, price, author);
-        return book;
-    }
-
-    public String getString(String label) {
-        System.out.println(label);
-        Scanner scanner = new Scanner(System.in);
-        return scanner.next();
-    }
-
-    public double getDouble(String label) {
-        return Double.parseDouble(getString(label));
+        return new Book(title, price, author);
     }
 }
